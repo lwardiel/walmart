@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Walmart Savings Offer | MyPerks</title>
+  <meta name="description" content="Claim Your $750 walmart Discount Today! Your $750 reward may be waiting—tap below to claim it!">
+  <meta name="theme-color" content="#0071ce">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --walmart-blue: #0071ce;
+      --walmart-dark: #004c91;
+      --walmart-yellow: #ffc220;
+      --text-dark: #202124;
+      --text-muted: #777b83;
+      --border: #eeeeef;
+      --background: #f5f5f7;
+    }
+
+    html {
+      min-height: 100%;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, Helvetica, Arial, sans-serif;
+      background:
+        radial-gradient(ellipse at 50% 0%, #ffffff 0%, transparent 60%),
+        var(--background);
+      color: var(--text-dark);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    .offer-page {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 42px 18px;
+    }
+
+    .offer-card {
+      position: relative;
+      width: 100%;
+      max-width: 445px;
+      padding: 35px 30px 25px;
+      background: #ffffff;
+      border: 1px solid rgba(0, 0, 0, 0.035);
+      border-radius: 23px;
+      box-shadow:
+        0 2px 5px rgba(0, 0, 0, 0.015),
+        0 12px 35px rgba(0, 0, 0, 0.045),
+        0 35px 75px rgba(0, 0, 0, 0.035);
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .offer-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--walmart-blue), var(--walmart-yellow));
+    }
+
+    /* Independent offer-page wordmark */
+    .walmart-mark {
+      display: block;
+      width: 165px;
+      height: auto;
+      object-fit: contain;
+      margin: 0 auto 22px;
+    }
+
+    .eyebrow {
+      color: var(--walmart-blue);
+      font-size: 10px;
+      font-weight: 850;
+      letter-spacing: 2.1px;
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      color: var(--text-dark);
+      font-size: 34px;
+      font-weight: 850;
+      line-height: 1.15;
+      letter-spacing: -1.4px;
+      margin-bottom: 13px;
+    }
+
+    h1 span {
+      color: var(--walmart-blue);
+    }
+
+    .desktop-break {
+      display: inline;
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 14px;
+      line-height: 1.7;
+      margin: 0 auto 26px;
+      max-width: 340px;
+    }
+
+    /* Reward card */
+    .reward-card {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 17px;
+      margin-bottom: 18px;
+      background: linear-gradient(135deg, #fafafa, #f3f3f3);
+      border: 1px solid #e7e7e7;
+      border-radius: 15px;
+      text-align: left;
+      transition: border-color .2s ease, box-shadow .2s ease;
+    }
+
+    .reward-card:hover {
+      border-color: #c9c9c9;
+      box-shadow: 0 5px 16px rgba(0, 0, 0, 0.06);
+    }
+
+    .gift-box {
+      width: 47px;
+      height: 47px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--walmart-blue);
+      background: #eaf4ff;
+      border-radius: 13px;
+    }
+
+    .reward-copy {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .reward-copy strong {
+      color: #292929;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .reward-copy span {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .reward-copy b {
+      color: var(--walmart-blue);
+      font-weight: 800;
+    }
+
+    .reward-card > svg:last-child {
+      color: #249653;
+      flex-shrink: 0;
+    }
+
+    /* Continue button */
+    .continue-button {
+      position: relative;
+      width: 100%;
+      min-height: 57px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 11px;
+      background: linear-gradient(135deg, #0071ce, #004c91);
+      color: #ffffff;
+      border: 0;
+      border-radius: 13px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: .1px;
+      box-shadow: 0 6px 15px rgba(0, 113, 206, 0.17);
+      transition:
+        transform .2s ease,
+        box-shadow .2s ease,
+        background .2s ease;
+    }
+
+    .continue-button:hover {
+      background: linear-gradient(135deg, #004c91, #003b70);
+      transform: translateY(-2px);
+      box-shadow: 0 9px 21px rgba(0, 76, 145, 0.22);
+    }
+
+    .continue-button:active {
+      transform: translateY(0) scale(.99);
+      box-shadow: 0 3px 9px rgba(0, 0, 0, 0.15);
+    }
+
+    .continue-button:focus-visible {
+      outline: 3px solid rgba(0, 113, 206, .3);
+      outline-offset: 4px;
+    }
+
+    .continue-button svg {
+      flex-shrink: 0;
+      transition: transform .2s ease;
+    }
+
+    .continue-button:hover svg {
+      transform: translateX(3px);
+    }
+
+    /* Security note */
+    .secure-note {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 7px;
+      margin: 16px 0 29px;
+      color: #858585;
+      font-size: 11px;
+      font-weight: 500;
+    }
+
+    .secure-note svg {
+      color: #269653;
+      flex-shrink: 0;
+    }
+
+    /* How it works */
+    .how-it-works {
+      text-align: left;
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      margin-bottom: 21px;
+    }
+
+    .section-heading span {
+      height: 1px;
+      flex: 1;
+      background: var(--border);
+    }
+
+    .section-heading h2 {
+      color: #303030;
+      font-size: 12px;
+      font-weight: 850;
+      letter-spacing: 1.1px;
+      white-space: nowrap;
+    }
+
+    .how-it-works ol {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 17px;
+    }
+
+    .how-it-works li {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      color: #60636a;
+      font-size: 12px;
+      line-height: 1.55;
+    }
+
+    .how-it-works li strong {
+      color: #353535;
+      font-weight: 750;
+    }
+
+    .step-number {
+      width: 29px;
+      height: 29px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #eaf4ff;
+      color: var(--walmart-blue);
+      border: 1px solid #c9e2fb;
+      border-radius: 50%;
+      font-size: 12px;
+      font-weight: 850;
+    }
+
+    /* Fine print */
+    .fine-print {
+      margin-top: 25px;
+      padding-top: 17px;
+      border-top: 1px solid var(--border);
+      color: #a0a0a0;
+      font-size: 10px;
+      line-height: 1.7;
+    }
+
+    /* Responsive */
+    @media (max-width: 480px) {
+      .offer-page {
+        padding: 22px 13px;
+      }
+
+      .offer-card {
+        padding: 29px 21px 23px;
+        border-radius: 19px;
+      }
+
+      h1 {
+        font-size: 30px;
+        letter-spacing: -1.2px;
+      }
+    }
+
+    @media (max-width: 350px) {
+      .offer-card {
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+
+      h1 {
+        font-size: 27px;
+      }
+
+      .desktop-break {
+        display: none;
+      }
+
+      .reward-card {
+        gap: 10px;
+        padding: 13px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="offer-page">
+    <section class="offer-card" aria-labelledby="offer-title">
+
+      <img
+        class="walmart-mark"
+        src="https://logos-marques.com/wp-content/uploads/2023/01/Walmart-Logo.png"
+        alt="Walmart logo"
+      >
+
+      <p class="eyebrow"><strong>INDEPENDENT PROMOTIONAL OFFER</strong></p>
+
+      <h1 id="offer-title">
+        Claim Your <span>$750 walmart Discount</span><br class="desktop-break">
+        Today!
+      </h1>
+
+      <p class="subtitle">
+        Your $750 reward may be waiting—tap below to claim it!
+      </p>
+
+      <div class="reward-card">
+
+        <div class="gift-box">
+          <svg xmlns="http://www.w3.org/2000/svg"
+            width="25" height="25" viewBox="0 0 24 24"
+            fill="none" stroke="currentColor"
+            stroke-width="2.4" stroke-linecap="round"
+            stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 7v14"></path>
+            <path d="M20 11v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-8"></path>
+            <path d="M7.5 7a1 1 0 0 1 0-5A4.8 8 0 0 1 12 7a4.8 8 0 0 1 4.5-5 1 1 0 0 1 0 5"></path>
+            <rect x="3" y="7" width="18" height="4" rx="1"></rect>
+          </svg>
+        </div>
+
+        <div class="reward-copy">
+          <strong>Walmart-related Promotional Offer</strong>
+          <span>Advertised offer amount <b>$750</b></span>
+        </div>
+
+        <svg xmlns="http://www.w3.org/2000/svg"
+          width="21" height="21" viewBox="0 0 24 24"
+          fill="none" stroke="currentColor"
+          stroke-width="2.1" stroke-linecap="round"
+          stroke-linejoin="round" aria-hidden="true">
+          <path d="M20 6 9 17l-5-5"></path>
+        </svg>
+
+      </div>
+
+      <a class="continue-button"
+        href="your link">
+
+        Continue to Next Step
+
+        <svg xmlns="http://www.w3.org/2000/svg"
+          width="19" height="19" viewBox="0 0 24 24"
+          fill="none" stroke="currentColor"
+          stroke-width="2.2" stroke-linecap="round"
+          stroke-linejoin="round" aria-hidden="true">
+          <path d="M5 12h14"></path>
+          <path d="m12 5 7 7-7 7"></path>
+        </svg>
+
+      </a>
+
+      <div class="secure-note">
+        <svg xmlns="http://www.w3.org/2000/svg"
+          width="16" height="16" viewBox="0 0 24 24"
+          fill="none" stroke="currentColor"
+          stroke-width="2" stroke-linecap="round"
+          stroke-linejoin="round" aria-hidden="true">
+          <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path>
+          <path d="m9 12 2 2 4-4"></path>
+        </svg>
+        Secure &amp; confidential
+      </div>
+
+      <div class="how-it-works">
+
+        <div class="section-heading">
+          <span></span>
+          <h2>How It Works</h2>
+          <span></span>
+        </div>
+
+        <ol>
+          <li>
+            <span class="step-number">1</span>
+            <span>Click <strong>“Continue to Next Step”</strong></span>
+          </li>
+
+          <li>
+            <span class="step-number">2</span>
+            <span>Enter your email</span>
+          </li>
+
+          <li>
+            <span class="step-number">3</span>
+            <span>Review and complete the listed qualifying steps, if eligible</span>
+          </li>
+
+          <li>
+            <span class="step-number">4</span>
+            <span>Enjoy your $750 walmart gift card!</span>
+          </li>
+        </ol>
+
+      </div>
+
+      <p class="fine-print">
+        This is an independent promotional page and is not affiliated with, endorsed by, or sponsored by Walmart. Walmart trademarks belong to their respective owner. The $750 amount is an advertised promotional value, not a guaranteed reward. Availability, eligibility, qualifying actions, and terms are determined by the offer provider. Review all terms before participating.
+      </p>
+
+    </section>
+  </main>
+
+</body>
+</html>
